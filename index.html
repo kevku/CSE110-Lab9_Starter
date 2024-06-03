@@ -69,21 +69,21 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button id="console-log">Console Log</button>
+      <button id="console-error">Console Error</button>
+      <button id="console-count">Console Count</button>
+      <button id="console-warn">Console Warn</button>
+      <button id="console-assert">Console Assert</button>
+      <button id="console-clear">Console Clear</button>
+      <button id="console-dir">Console Dir</button>
+      <button id="console-dirxml">Console dirxml</button>
+      <button id="console-group-start">Console Group Start</button>
+      <button id="console-group-end">Console Group End</button>
+      <button id="console-table">Console Table</button>
+      <button id="start-timer">Start Timer</button>
+      <button id="end-timer">End Timer</button>
+      <button id="console-trace">Console Trace</button>
+      <button id="global-error">Trigger a Global Error</button>
     </section>
   </main>
 
@@ -99,9 +99,50 @@
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
     // Start your code here
     // You may move this JS to another file if you wish
+    errorBtns[0].addEventListener('click', function() {
+      console.log('Console log demo');
+    });
+    errorBtns[1].addEventListener('click', function() {
+        console.error('You clicked the error button!');
+    });
+    errorBtns[2].addEventListener('click', function() {
+        console.count('Times clicked');
+    });
+    errorBtns[3].addEventListener('click', function() {
+        console.warn('Becareful with the button you clicked!');
+    });
+    errorBtns[4].addEventListener('click', function() {
+        console.assert(1 === 2);
+    });
+    errorBtns[5].addEventListener('click', function() {
+        console.clear();
+    });
+    errorBtns[6].addEventListener('click', function() {
+        console.dir(form);
+    });
+    errorBtns[7].addEventListener('click', function() {
+        console.dirxml(form);
+    });
+    errorBtns[8].addEventListener('click', function() {
+        console.group('Random errors clicked');
+    });
+    errorBtns[9].addEventListener('click', function() {
+        console.groupEnd();
+    });
+    errorBtns[10].addEventListener('click', function() {
+        console.table([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+    });
+    errorBtns[11].addEventListener('click', function() {
+        console.time();
+    });
+    errorBtns[12].addEventListener('click', function() {
+        console.timeEnd();
+    });
+    errorBtns[13].addEventListener('click', function() {
+        console.trace();
+    });
   </script>
 </body>
 
