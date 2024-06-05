@@ -143,6 +143,27 @@
     errorBtns[13].addEventListener('click', function() {
         console.trace();
     });
+
+    try {
+      errorBtns[15].addEventListener('click', function() {
+        console.log('say something');
+      });
+    }catch{
+      console.log('There is no 14th button');
+    }
+
+    const person = '{ "name": 1234}';
+    try {
+      let user = JSON.parse(person);
+      if (!user.id) {
+        throw new SyntaxError("Incomplete data: no id number"); 
+      }
+      alert( user.name );
+
+    } catch (err) {
+      alert( "JSON Error: " + err.message ); 
+    }
+
   </script>
 </body>
 
