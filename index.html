@@ -165,6 +165,15 @@
     errorBtns[13].addEventListener('click', function() {
         console.trace();
     });
+    try {
+      errorBtns[14].addEventListener('click', function() {
+        throw new SyntaxError("Throwing Error"); 
+      });
+    }
+    catch (err) {
+      console.error('Global error caught:', error);
+      TrackJS.track(err);
+    }
 
     try {
       errorBtns[15].addEventListener('click', function() {
@@ -204,12 +213,6 @@
     alert(err.name); // ValidationError
     alert(err.stack); // a list of nested calls with line numbers for each
   }
-
-  window.onerror = function(message, source, lineno, colno, error) {
-            console.error(`Global error caught: ${message} at ${source}:${lineno}:${colno}`);
-            // Here you would send the error data to your server or a third-party service
-            TrackJS.track('Testing TrackJS!');
-        };
 
 
   </script>
