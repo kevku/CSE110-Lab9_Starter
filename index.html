@@ -207,8 +207,9 @@
 
   window.onerror = function(message, source, lineno, colno, error) {
             console.error(`Global error caught: ${message} at ${source}:${lineno}:${colno}`);
-            // Here you would send the error data to your server or a third-party service
-            TrackJS.track('Testing TrackJS!');
+            // Log a message to the console
+            console.log('Global error logged to console');
+            return true; // Prevents the default browser error handling
         };
 
 
