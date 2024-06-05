@@ -214,6 +214,16 @@
     alert(err.stack); // a list of nested calls with line numbers for each
   }
 
+<<<<<<< HEAD
+=======
+  window.onerror = function(message, source, lineno, colno, error) {
+            console.error(`Global error caught: ${message} at ${source}:${lineno}:${colno}`);
+            // Log a message to the console
+            console.log('Global error logged to console');
+            return true; // Prevents the default browser error handling
+        };
+
+>>>>>>> f868f6c3fde85b6d993b92d949e2a98c16d99bc8
 
   </script>
 </body>
