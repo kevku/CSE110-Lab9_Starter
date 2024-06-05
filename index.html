@@ -47,6 +47,15 @@
       width: 122px;
     }
   </style>
+
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "f2053c1c467746f1b99634f2ca17b750"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+                        
 </head>
 
 <body>
@@ -94,8 +103,21 @@
       let output = document.querySelector('output');
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
+      let operator = document.querySelector('#operator').value;      
+      let form = document.querySelector('form');
+
+      try {
+      if(isNaN(firstNum) || isNaN(secondNum)) {
+        throw new SyntaxError("Entries are not a number");
+      }
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (err) {
+        alert ("Input Error: " + err.message);
+      } finally {
+        form.reset();
+
+      }
+      // output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -163,6 +185,32 @@
     } catch (err) {
       alert( "JSON Error: " + err.message ); 
     }
+
+    class ValidationError extends Error {
+    constructor(message) {
+      super(message); // (1)
+      this.name = "ValidationError"; // (2)
+    }
+  }
+
+  function test() {
+    throw new ValidationError("Whoops!");
+  }
+
+  try {
+    test();
+  } catch(err) {
+    alert(err.message); // Whoops!
+    alert(err.name); // ValidationError
+    alert(err.stack); // a list of nested calls with line numbers for each
+  }
+
+  window.onerror = function(message, source, lineno, colno, error) {
+            console.error(`Global error caught: ${message} at ${source}:${lineno}:${colno}`);
+            // Here you would send the error data to your server or a third-party service
+            TrackJS.track('Testing TrackJS!');
+        };
+
 
   </script>
 </body>
